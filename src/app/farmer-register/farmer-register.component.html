@@ -1,0 +1,105 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+   
+</head>
+<body>
+    <form #RegisterForm="ngForm" (ngSubmit)="RegisterSubmit(RegisterForm.value)" nonvalidate>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1 class="text-left">Farmer Registration</h1>
+                <p>------------------------------------------------------</p>
+                <p>#Agriculture is our wisest pursuit, because it will in the end contribute most to real wealth, good morals, and happiness.</p>
+                <p>#The ultimate goal of farming is not the growing of crops, but the cultivation and perfection of human beings.</p>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="text-left">Registration Form</h3>
+                    </div>
+                    <div class="col-md-6">
+                        <span class="glyphicon glyphicon-pencil"></span></div>
+                </div>
+
+                <hr>
+                <br/>
+               
+                <div class="row">
+                    
+                    <label class="label col-md-2 control">Farmer Name</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="farmerName"  placeholder="Enter Farmer Name" ngModel>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="label col-md-2 control">Address</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="address" placeholder="Enter address" ngModel>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="label col-md-2 control">Mobile</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="mobile" placeholder="Enter mobile no" ngModel required maxlength=10>
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="label col-md-2 control">Password</label>
+                    <div class="col-md-10">
+                        <input type="password" class="form-control" name="password" placeholder="Enter password" ngModel>
+                    </div>
+                </div>
+              <!--  <div class="row">
+                    <label class="label col-md-2 control">PassBook Id</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="passbookId" placeholder="Enter PassBookId" ngModel>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <label class="label col-md-2 control">Aadhar</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="aadhar" placeholder="Enter Aadhar Number" ngModel  id="txtAadhar" onblur="AadharValidate();">
+                    </div>
+                </div>
+                    <div class="row">
+                        <label class="label col-md-2 control">Upload Land Documents</label>
+                             
+                
+                    
+                </div>
+                <input type="file" class="form-control1"  multiple="multiple">
+                
+                
+                <button  class="btn btn-primary" [disabled]="!RegisterForm.valid" > Register</button>
+                <a routerLink="/FarmerLogin" style="color: blanchedalmond;" class="btn btn-link">Cancel</a>
+            </div>
+            
+        </div>
+
+    </div>
+    </form>
+</body>
+<!--<div class="bg">
+<div class="container" align="center">
+    <fieldset>
+        <legend>Farmer Register</legend>
+
+        <form #RegisterForm="ngForm" (ngSubmit)="RegisterSubmit(RegisterForm.value)" nonvalidate>
+            Enter Farmer Name : <input type="text" name="farmerName" ngModel><br /><br />
+            Enter Address : <input type="text" name="address" ngModel><br /><br />
+            Enter Mobile : <input type="text" name="mobile" ngModel><br /><br />
+            Enter password : <input type="password" name="password" ngModel><br /><br />
+            Enter PassBook Id : <input type="text" name="passbookId" ngModel><br /><br />
+            Enter Aadhar <input type="text" name="aadhar" ngModel><br /><br />
+
+            
+            <button  class="btn btn-primary" [disabled]="!RegisterForm.valid" > Register</button>
+        </form>
+    </fieldset>
+    <a routerLink="/FarmerLogin" class="btn btn-link">Cancel</a>
+
+</div>
+</div>-->
+
+                       
