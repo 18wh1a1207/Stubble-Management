@@ -106,6 +106,9 @@ export class UserService {
   clearCart() {
     this.cartItems = [];
   }
+  message(manufacturerName:any, mobile:any , productName : any ) {
+    return this.httpClient.get('StubbleManagement/webapi/myresource/message/'+ manufacturerName + '/' +mobile + '/' + productName );
+  }
  
 
 }

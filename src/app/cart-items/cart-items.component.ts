@@ -73,6 +73,8 @@ confirmOrder() : any{
    this.purchaseOrder.product = this.x;
    this.purchaseOrder.manufacturer =this.loggedManufacturer;
    this.service.confirmOrder(this.purchaseOrder).subscribe((result: any) => console.log(result));
+
+   this.service.message(this.loggedManufacturer.manufacturerName,this.purchaseOrder.product.farmer.mobile,this.purchaseOrder.product.productName).subscribe((result: any) => console.log(result));
  }
  this.cartItems = [];
  this.service.clearCart();
