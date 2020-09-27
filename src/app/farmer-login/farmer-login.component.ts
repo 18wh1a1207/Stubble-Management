@@ -18,7 +18,7 @@ export class FarmerLoginComponent implements OnInit {
   farmer : any;
   loggedFarmer : any;
   loggedManufacturer : any;
-  
+  passmatch : any;
 
   constructor(private service : UserService , private router : Router, private notifyService : NotificationService) { 
     this.user = {aadhar : '' , password : ''};
@@ -48,12 +48,12 @@ export class FarmerLoginComponent implements OnInit {
   async loginSubmit(loginForm: any){
     
     await this.service.loginfarmer(this.user.aadhar).then((farmer) => {console.log(farmer); this.loggedFarmer = farmer} );
-    //this.showToasterError1();
-    //let data = this.loggedFarmer;
+    
     localStorage.setItem('farmer' , JSON.stringify(this.loggedFarmer));
     
     if(this.loggedFarmer != null) {
-      if(this.loggedFarmer.password == this.user.password) {
+      //this.passmatch = this.service.checkHashedPassword(this.user.password);
+      if(this.user.password === this.loggedFarmer.password) {
         this.showToasterSuccess();
         this.service.setFarmerLoggedIn();
         this.router.navigate(['Addproducts']);
@@ -65,16 +65,7 @@ export class FarmerLoginComponent implements OnInit {
     }
 
   }
- /* async loginSubmit1(loginForm:any) {
-    await this.service.loginmanufacturer(this.user.mailId, this.user.password).then((manufacturer) => {console.log(manufacturer); this.loggedManufacturer = manufacturer} );
-    if(this.loggedManufacturer != null){
-      alert('Login Successful !!!');
-      this.router.navigate(['Displayproducts']);
-    } else {
-      alert('Inavalid Cerenditals');
-    }
-
-  }*/
+ 
 
 
   /*googleInitialize() {

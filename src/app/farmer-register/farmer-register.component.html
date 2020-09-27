@@ -4,7 +4,7 @@
    
 </head>
 <body>
-    <form #RegisterForm="ngForm" (ngSubmit)="RegisterSubmit(RegisterForm.value)" nonvalidate>
+    <form #RegisterForm="ngForm" (ngSubmit)="openPop(RegisterForm.value)" nonvalidate>
     <div class="container">
         <div class="row">
             <div class="col-md-7">
@@ -44,62 +44,85 @@
                         <input type="text" class="form-control" name="mobile" placeholder="Enter mobile no" ngModel required maxlength=10>
                     </div>
                 </div>
+                
                 <div class="row">
                     <label class="label col-md-2 control">Password</label>
                     <div class="col-md-10">
                         <input type="password" class="form-control" name="password" placeholder="Enter password" ngModel>
                     </div>
                 </div>
-              <!--  <div class="row">
-                    <label class="label col-md-2 control">PassBook Id</label>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" name="passbookId" placeholder="Enter PassBookId" ngModel>
-                    </div>
-                </div>-->
                 <div class="row">
                     <label class="label col-md-2 control">Aadhar</label>
                     <div class="col-md-10">
                         <input type="text" class="form-control" name="aadhar" placeholder="Enter Aadhar Number" ngModel  id="txtAadhar" onblur="AadharValidate();">
                     </div>
                 </div>
-                    <div class="row">
+                    <!--<div class="row">
                         <label class="label col-md-2 control">Upload Land Documents</label>
-                             
-                
-                    
                 </div>
-                <input type="file" class="form-control1"  multiple="multiple">
+               <input type="file" class="form-control1"  multiple="multiple">-->
                 
                 
-                <button  class="btn btn-primary" [disabled]="!RegisterForm.valid" > Register</button>
+                <button  class="btn btn-primary" [disabled]="!RegisterForm.valid" >Register</button>
                 <a routerLink="/FarmerLogin" style="color: blanchedalmond;" class="btn btn-link">Cancel</a>
+                <div class="row">
+                    <label class="label col-md-2 control">Enter OTP</label>
+                        <div class="col-md-10">
+                           <input type="number" class="form-control" placeholder="Enter OTP" name = "number" ngmodel #title="ngModel" [(ngModel)]='otp' required>
+                   </div>
+               </div>
+               <button (click)="RegisterSubmit()">Verify OTP</button>
             </div>
-            
         </div>
 
     </div>
+    
     </form>
+    
 </body>
-<!--<div class="bg">
-<div class="container" align="center">
-    <fieldset>
-        <legend>Farmer Register</legend>
 
-        <form #RegisterForm="ngForm" (ngSubmit)="RegisterSubmit(RegisterForm.value)" nonvalidate>
-            Enter Farmer Name : <input type="text" name="farmerName" ngModel><br /><br />
-            Enter Address : <input type="text" name="address" ngModel><br /><br />
-            Enter Mobile : <input type="text" name="mobile" ngModel><br /><br />
-            Enter password : <input type="password" name="password" ngModel><br /><br />
-            Enter PassBook Id : <input type="text" name="passbookId" ngModel><br /><br />
-            Enter Aadhar <input type="text" name="aadhar" ngModel><br /><br />
-
+<div id="otp-nonuse" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
             
-            <button  class="btn btn-primary" [disabled]="!RegisterForm.valid" > Register</button>
-        </form>
-    </fieldset>
-    <a routerLink="/FarmerLogin" class="btn btn-link">Cancel</a>
-
+                <div class="modal-header">						
+                    <h4 class="modal-title">Enter OTP</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                
+                <div class="modal-body">
+                    <form class="form-group" >
+                        <input type="number" class="form-control" placeholder="Enter OTP" name = "number" ngmodel #title="ngModel" [(ngModel)]='otp' required>
+                    
+                    
+                <div class="modal-footer" >
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="button" (click)="verifyOTP()" class="btn btn-default" class="btn btn-info" value="Verify" data-dismiss="modal">
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
 </div>
-</div>-->
+             
 
-                       
+<div class="container">
+    <div class="modal fade" id="otp">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" data-dismiss="modal">&times;</span>
+                    <h4 class="modal-title">Enter OTP</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group">
+                        Enter OTP: <input type="number" name="otp" [(ngModel)]="otp"
+                            class="form-control"><br />
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-sm" (click)="verifyOTP()" data-dismiss="modal">verify</button>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -21,12 +21,16 @@ export class ShowFarmerProductsComponent implements OnInit {
   }
 
   deleteProduct(product: any) {
-    this.service.deleteproduct(product).subscribe((result: any) => {
-      const i = this.products.findIndex((element) => { return element.productId === product.productId;
+    if(product.status == 'available') {
+        this.service.deleteproduct(product).subscribe((result: any) => {
+        const i = this.products.findIndex((element) => { return element.productId === product.productId;
       
     });
   this.products.splice(i, 1);
     //console.log(employee);
   });
+  } else {
+    alert("Cannot delete since product is already sold");
+  } 
   }
 }

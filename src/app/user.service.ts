@@ -53,7 +53,7 @@ export class UserService {
      return this.httpClient.get('StubbleManagement/webapi/myresource/getAllFarmers');
    }*/
   loginfarmer(aadhar: any): any {
-    return this.httpClient.get('StubbleManagement/webapi/myresource/farmerLogin/' + aadhar).toPromise();
+    return this.httpClient.get('StubbleManagement/webapi/myresource/farmerLogin/' + aadhar ).toPromise();
   }
   loginmanufacturer(mailId: any): any {
     return this.httpClient.get('StubbleManagement/webapi/myresource/manufacturerLogin/' + mailId).toPromise();
@@ -109,6 +109,13 @@ export class UserService {
   message(manufacturerName:any, mobile:any , productName : any ) {
     return this.httpClient.get('StubbleManagement/webapi/myresource/message/'+ manufacturerName + '/' +mobile + '/' + productName );
   }
- 
+ checkHashedPassword(password : any) : any{
+  return this.httpClient.get('StubbleManagement/webapi/myresource/checkHashPassword/'+ password);
+ }
+
+ getOtp(number: any) : any {
+  return this.httpClient.get('StubbleManagement/webapi/myresource/sendOTP/'+ number)
+}
+
 
 }
